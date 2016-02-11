@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    interface IPhenotype
+    public interface IPhenotype
     {
         double fitness { get; set; }
     }

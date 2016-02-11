@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    class OverProduction : IAdultSelectionStrategy
+    public class OverProduction : IAdultSelectionStrategy
     {
         public List<IPhenotype> adultSelection(List<IPhenotype> adults, List<IPhenotype> children)
         {
@@ -20,7 +20,7 @@ namespace EA
             {
                 // Return best adultPoolSize best children.
                 return  (from p in children
-                         orderby p.fitness
+                         orderby p.fitness descending
                          select p).Take(populationSize).ToList();
             }
 

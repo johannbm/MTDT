@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    class FullGenerationalReplacement : IAdultSelectionStrategy
+    public class FullGenerationalReplacement : IAdultSelectionStrategy
     {
         public List<IPhenotype> adultSelection(List<IPhenotype> adults, List<IPhenotype> children)
         {

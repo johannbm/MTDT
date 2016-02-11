@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    class GenerationalMixing : IAdultSelectionStrategy
+    public class GenerationalMixing : IAdultSelectionStrategy
     {
         public List<IPhenotype> adultSelection(List<IPhenotype> adults, List<IPhenotype> children)
         {
@@ -15,8 +15,8 @@ namespace EA
             adults.AddRange(children);
 
             // Return best adultPoolSize best children.
-            return (from p in children
-                    orderby p.fitness
+            return (from p in adults
+                    orderby p.fitness descending
                     select p).Take(populationSize).ToList();
         }
     }
