@@ -179,6 +179,36 @@ namespace EATesting
             }
         }
 
+        [TestMethod]
+        public void BoltzmannScaledFitnessTest()
+        {
+            List<IPhenotype> adults = new List<IPhenotype>();
+            Dictionary<IPhenotype, int> occurances = new Dictionary<IPhenotype, int>();
+
+            for (int i = 0; i < 20; i++)
+            {
+                adults.Add(new Phenotype(i));
+                occurances.Add(adults[i], 0);
+            }
+
+            for (int i = 0; i < 50000; i++)
+            {
+                BoltzmannScalingSelection bss = new BoltzmannScalingSelection(1);
+                List<IPhenotype> res = bss.selectParents(adults, 5);
+
+                foreach (IPhenotype p in res)
+                {
+                    occurances[p] += 1;
+                }
+
+            }
+
+            foreach (KeyValuePair<IPhenotype, int> entry in occurances)
+            {
+                Console.WriteLine(entry.Key.fitness + " : " + entry.Value);
+            }
+        }
+
 
 
         private void DebugPhenotypeList(List<IPhenotype> list)
