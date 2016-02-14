@@ -20,6 +20,8 @@ namespace EA
             return GetFitnessSum(phenotypes) / phenotypes.Count;
         }
 
+        
+
         protected double GetVariance(List<IPhenotype> phenotypes)
         {
             double squaredDifferenceSum = 0;
