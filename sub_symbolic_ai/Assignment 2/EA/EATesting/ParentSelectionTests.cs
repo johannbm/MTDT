@@ -193,7 +193,7 @@ namespace EATesting
 
             for (int i = 0; i < 50000; i++)
             {
-                BoltzmannScalingSelection bss = new BoltzmannScalingSelection(1);
+                BoltzmannScalingSelection bss = new BoltzmannScalingSelection(10);
                 List<IPhenotype> res = bss.selectParents(adults, 5);
 
                 foreach (IPhenotype p in res)
