@@ -46,15 +46,17 @@
     <Compile Include="EA.cs" />
     <Compile Include="Adult Selection\FullGenerationalReplacement.cs" />
     <Compile Include="Adult Selection\GenerationalMixing.cs" />
+    <Compile Include="FitnessProportionateSelection.cs" />
     <Compile Include="Interfaces\IFitnessCalculator.cs" />
     <Compile Include="Interfaces\IGenotype.cs" />
-    <Compile Include="Interfaces\IParentSelectionStrategy.cs" />
     <Compile Include="Interfaces\IPhenotype.cs" />
     <Compile Include="Interfaces\IAdultSelectionStrategy.cs" />
     <Compile Include="Adult Selection\OverProduction.cs" />
+    <Compile Include="ParentSelectionStrategy.cs" />
     <Compile Include="Phenotype.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RouletteWheel.cs" />
     <Compile Include="TournamentSelection.cs" />
   </ItemGroup>
   <ItemGroup>
