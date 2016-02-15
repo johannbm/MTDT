@@ -8,6 +8,7 @@ namespace EA
 {
     public interface IGenotype
     {
-        
+        IPhenotype developedPhenotype { get; set; }
+        T CreateRandomGenotypes<T>();
     }
 }

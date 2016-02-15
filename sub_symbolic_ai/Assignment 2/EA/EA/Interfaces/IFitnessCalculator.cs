@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    interface IFitnessCalculator
+    public interface IFitnessCalculator
     {
         double CalculateFitness(IPhenotype phenotype);
         void CalculateAndSetFitness(IPhenotype phenotype);

@@ -6,9 +6,7 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    public interface IPhenotype
+    class BinaryDevelopment
     {
-        double fitness { get; set; }
-        IGenotype genotypeParent { get; set; }
     }
 }

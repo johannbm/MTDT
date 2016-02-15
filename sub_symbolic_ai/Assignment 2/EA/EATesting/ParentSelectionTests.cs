@@ -16,7 +16,7 @@ namespace EATesting
 
             for (int i  = 0; i < 20; i++)
             {
-                adults.Add(new Phenotype(i));
+                adults.Add(new BinaryPhenotype(i));
             }
 
             TournamentSelection ts = new TournamentSelection(5, 0.0);
@@ -35,7 +35,7 @@ namespace EATesting
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new Phenotype(i));
+                adults.Add(new BinaryPhenotype(i));
             }
 
             TournamentSelection ts = new TournamentSelection(5, 0.0);
@@ -56,7 +56,7 @@ namespace EATesting
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new Phenotype(i));
+                adults.Add(new BinaryPhenotype(i));
             }
 
             RouletteWheel rw = new RouletteWheel();
@@ -124,7 +124,7 @@ namespace EATesting
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new Phenotype(i));
+                adults.Add(new BinaryPhenotype(i));
                 occurances.Add(adults[i], 0);
             }
 
@@ -157,7 +157,7 @@ namespace EATesting
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new Phenotype(i));
+                adults.Add(new BinaryPhenotype(i));
                 occurances.Add(adults[i], 0);
             }
 
@@ -187,7 +187,7 @@ namespace EATesting
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new Phenotype(i));
+                adults.Add(new BinaryPhenotype(i));
                 occurances.Add(adults[i], 0);
             }
 
@@ -213,7 +213,7 @@ namespace EATesting
 
         private void DebugPhenotypeList(List<IPhenotype> list)
         {
-            foreach(Phenotype p in list)
+            foreach(BinaryPhenotype p in list)
                 Console.WriteLine(p.fitness);
         }
 

@@ -18,26 +18,26 @@ namespace EATesting
             List<IPhenotype> children = new List<IPhenotype>();
             List<IPhenotype> adults = new List<IPhenotype>();
 
-            children.Add(new Phenotype(1));
-            children.Add(new Phenotype(3));
-            children.Add(new Phenotype(5));
-            children.Add(new Phenotype(7));
-            children.Add(new Phenotype(9));
-            children.Add(new Phenotype(11));
-            children.Add(new Phenotype(13));
-            children.Add(new Phenotype(15));
-            children.Add(new Phenotype(17));
+            children.Add(new BinaryPhenotype(1));
+            children.Add(new BinaryPhenotype(3));
+            children.Add(new BinaryPhenotype(5));
+            children.Add(new BinaryPhenotype(7));
+            children.Add(new BinaryPhenotype(9));
+            children.Add(new BinaryPhenotype(11));
+            children.Add(new BinaryPhenotype(13));
+            children.Add(new BinaryPhenotype(15));
+            children.Add(new BinaryPhenotype(17));
 
 
-            adults.Add(new Phenotype(2));
-            adults.Add(new Phenotype(4));
-            adults.Add(new Phenotype(6));
-            adults.Add(new Phenotype(8));
-            adults.Add(new Phenotype(10));
-            adults.Add(new Phenotype(12));
-            adults.Add(new Phenotype(14));
-            adults.Add(new Phenotype(16));
-            adults.Add(new Phenotype(18));
+            adults.Add(new BinaryPhenotype(2));
+            adults.Add(new BinaryPhenotype(4));
+            adults.Add(new BinaryPhenotype(6));
+            adults.Add(new BinaryPhenotype(8));
+            adults.Add(new BinaryPhenotype(10));
+            adults.Add(new BinaryPhenotype(12));
+            adults.Add(new BinaryPhenotype(14));
+            adults.Add(new BinaryPhenotype(16));
+            adults.Add(new BinaryPhenotype(18));
 
             OverProduction overProduction = new OverProduction();
             GenerationalMixing generationalMixing = new GenerationalMixing();
@@ -70,24 +70,24 @@ namespace EATesting
             List<IPhenotype> children = new List<IPhenotype>();
             List<IPhenotype> adults = new List<IPhenotype>();
 
-            children.Add(new Phenotype(1));
-            children.Add(new Phenotype(3));
-            children.Add(new Phenotype(5));
-            children.Add(new Phenotype(7));
-            children.Add(new Phenotype(9));
-            children.Add(new Phenotype(13));
-            children.Add(new Phenotype(17));
+            children.Add(new BinaryPhenotype(1));
+            children.Add(new BinaryPhenotype(3));
+            children.Add(new BinaryPhenotype(5));
+            children.Add(new BinaryPhenotype(7));
+            children.Add(new BinaryPhenotype(9));
+            children.Add(new BinaryPhenotype(13));
+            children.Add(new BinaryPhenotype(17));
 
 
-            adults.Add(new Phenotype(2));
-            adults.Add(new Phenotype(4));
-            adults.Add(new Phenotype(6));
-            adults.Add(new Phenotype(8));
-            adults.Add(new Phenotype(10));
-            adults.Add(new Phenotype(12));
-            adults.Add(new Phenotype(14));
-            adults.Add(new Phenotype(16));
-            adults.Add(new Phenotype(18));
+            adults.Add(new BinaryPhenotype(2));
+            adults.Add(new BinaryPhenotype(4));
+            adults.Add(new BinaryPhenotype(6));
+            adults.Add(new BinaryPhenotype(8));
+            adults.Add(new BinaryPhenotype(10));
+            adults.Add(new BinaryPhenotype(12));
+            adults.Add(new BinaryPhenotype(14));
+            adults.Add(new BinaryPhenotype(16));
+            adults.Add(new BinaryPhenotype(18));
 
             OverProduction overProduction = new OverProduction();
             GenerationalMixing generationalMixing = new GenerationalMixing();
@@ -116,23 +116,23 @@ namespace EATesting
             List<IPhenotype> children = new List<IPhenotype>();
             List<IPhenotype> adults = new List<IPhenotype>();
 
-            children.Add(new Phenotype(1));
-            children.Add(new Phenotype(3));
-            children.Add(new Phenotype(5));
-            children.Add(new Phenotype(7));
-            children.Add(new Phenotype(9));
-            children.Add(new Phenotype(11));
-            children.Add(new Phenotype(13));
-            children.Add(new Phenotype(15));
-            children.Add(new Phenotype(17));
+            children.Add(new BinaryPhenotype(1));
+            children.Add(new BinaryPhenotype(3));
+            children.Add(new BinaryPhenotype(5));
+            children.Add(new BinaryPhenotype(7));
+            children.Add(new BinaryPhenotype(9));
+            children.Add(new BinaryPhenotype(11));
+            children.Add(new BinaryPhenotype(13));
+            children.Add(new BinaryPhenotype(15));
+            children.Add(new BinaryPhenotype(17));
 
 
-            adults.Add(new Phenotype(2));
-            adults.Add(new Phenotype(4));
-            adults.Add(new Phenotype(6));
-            adults.Add(new Phenotype(8));
-            adults.Add(new Phenotype(10));
-            adults.Add(new Phenotype(12));
+            adults.Add(new BinaryPhenotype(2));
+            adults.Add(new BinaryPhenotype(4));
+            adults.Add(new BinaryPhenotype(6));
+            adults.Add(new BinaryPhenotype(8));
+            adults.Add(new BinaryPhenotype(10));
+            adults.Add(new BinaryPhenotype(12));
 
             OverProduction overProduction = new OverProduction();
             GenerationalMixing generationalMixing = new GenerationalMixing();

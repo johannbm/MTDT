@@ -10,12 +10,20 @@ namespace EA
     class EA
     {
 
-        private int maxNumOfGenerations;
-        private double maxFitness;
+        public int maxNumOfGenerations { get; }
+        public double maxFitness { get; }
 
-        private IFitnessCalculator fitnessCalculator;
-        //private IPhenotype phenotype;
-        //private IGenotype genotype;
+        public IFitnessCalculator fitnessCalculator { get; set; }
+        public IPhenotype phenotype { get; set; }
+        public IGenotype genotype { get; set; }
+        public IDevelopmentMethod developmentMethod { get; set; }
+        public IAdultSelectionStrategy adultSelectionStrategy { get; set; }
+        public ParentSelectionStrategy parentSelectionStrategy { get; set; }
+
+        public EA()
+        {
+
+        }
 
         public void Run()
         {
@@ -46,6 +54,8 @@ namespace EA
                 numOfGenerations++;
             }
         } 
+
+       
 
 
     }

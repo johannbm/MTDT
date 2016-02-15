@@ -6,9 +6,8 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    public interface IPhenotype
+    public interface IDevelopmentMethod
     {
-        double fitness { get; set; }
-        IGenotype genotypeParent { get; set; }
+        void DevelopGenotype(IGenotype genotype);
     }
 }
