@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    public interface IGenotype
+    public interface IGeneticOperators
     {
-        
     }
 }

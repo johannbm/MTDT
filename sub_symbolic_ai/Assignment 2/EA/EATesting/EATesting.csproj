@@ -51,6 +51,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AdultSelectionTests.cs" />
+    <Compile Include="GeneticOperatorsTest.cs" />
     <Compile Include="ParentSelectionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

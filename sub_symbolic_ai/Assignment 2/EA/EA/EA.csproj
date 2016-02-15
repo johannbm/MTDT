@@ -43,9 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BinaryGenotype.cs" />
     <Compile Include="EA.cs" />
     <Compile Include="Adult Selection\FullGenerationalReplacement.cs" />
     <Compile Include="Adult Selection\GenerationalMixing.cs" />
+    <Compile Include="GeneticOperators.cs" />
+    <Compile Include="IGeneticOperators.cs" />
     <Compile Include="Parent Selection\BoltzmannScalingSelection.cs" />
     <Compile Include="Parent Selection\FitnessProportionateSelection.cs" />
     <Compile Include="Interfaces\IFitnessCalculator.cs" />
@@ -60,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Parent Selection\RouletteWheel.cs" />
     <Compile Include="Parent Selection\TournamentSelection.cs" />
+    <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

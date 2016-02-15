@@ -8,17 +8,11 @@ namespace EA
     {
 
         private List<Tuple<IPhenotype, double>> rouletteEntriesList;
-        private static Random random;
         private double previousShare = 0;
 
         public RouletteWheel()
         {
             rouletteEntriesList = new List<Tuple<IPhenotype, double>>();
-
-            if (random == null)
-            {
-                random = new Random();
-            }
         }
 
         public void AddPhenotype(IPhenotype phenotype, double share)
@@ -37,7 +31,7 @@ namespace EA
         public IPhenotype spinWheel()
         {
 
-            double choice = RouletteWheel.random.NextDouble();
+            double choice = Utility.GetRandom().NextDouble();
 
             IPhenotype winner = null;
 

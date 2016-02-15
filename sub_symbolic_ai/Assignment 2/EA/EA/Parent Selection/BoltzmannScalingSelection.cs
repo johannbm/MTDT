@@ -18,7 +18,7 @@ namespace EA
         public override Dictionary<IPhenotype, double> ScaleValues(List<IPhenotype> candidates)
         {
             Dictionary<IPhenotype, double> scaledValues = new Dictionary<IPhenotype, double>();
-            double mean = GetFitnessAverage(candidates);
+            double mean = Utility.GetFitnessAverage(candidates);
 
             foreach (IPhenotype p in candidates)
             {

@@ -11,7 +11,7 @@ namespace EA
 
         public override List<IPhenotype> selectParents(List<IPhenotype> candidates, int numberOfParents)
         {
-            double fitnessSum = GetFitnessSum(candidates);
+            double fitnessSum = Utility.GetFitnessSum(candidates);
             List<IPhenotype> winners = new List<IPhenotype>();
 
             RouletteWheel rw = new RouletteWheel();
