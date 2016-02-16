@@ -8,5 +8,7 @@ namespace EA
 {
     public interface IGeneticOperators
     {
+        void Mutate(Individual individual, double mutationProbability);
+        Individual OnePointCrossOver(Individual individual1, Individual individual2);
     }
 }

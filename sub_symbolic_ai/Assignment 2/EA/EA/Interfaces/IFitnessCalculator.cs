@@ -8,8 +8,8 @@ namespace EA
 {
     public interface IFitnessCalculator
     {
-        double CalculateFitness(IPhenotype phenotype);
-        void CalculateAndSetFitness(IPhenotype phenotype);
-        void CalculateAndSetFitness(IPhenotype[] phenotype);
+        double CalculateFitness(Individual individual);
+        void CalculateAndSetFitness(Individual individual);
+        void CalculateAndSetFitness(Individual[] individual);
     }
 }

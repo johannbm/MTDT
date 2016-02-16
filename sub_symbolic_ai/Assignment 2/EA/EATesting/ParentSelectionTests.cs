@@ -10,6 +10,24 @@ namespace EATesting
     {
 
         [TestMethod]
+        public void CopyTest()
+        {
+            int[] numbers = new int[] { 1, 2, 3, 4, 5 };
+            int[] secondNumbers = (int[])numbers.Clone();
+
+            secondNumbers[3] = 1023231;
+
+            foreach(int i in numbers)
+            {
+                Console.WriteLine(i);
+            }
+            foreach (int i in secondNumbers)
+            {
+                Console.WriteLine(i);
+            }
+        }
+
+        [TestMethod]
         public void TournamentSelectionDiscardNone()
         {
             List<IPhenotype> adults = new List<IPhenotype>();

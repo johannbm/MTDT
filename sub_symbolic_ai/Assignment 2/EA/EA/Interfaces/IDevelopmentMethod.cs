@@ -8,6 +8,6 @@ namespace EA
 {
     public interface IDevelopmentMethod
     {
-        void DevelopGenotype(IGenotype genotype);
+        void DevelopGenotype(Individual genotype);
     }
 }

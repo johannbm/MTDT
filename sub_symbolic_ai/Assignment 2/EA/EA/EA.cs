@@ -14,15 +14,18 @@ namespace EA
         public double maxFitness { get; }
 
         public IFitnessCalculator fitnessCalculator { get; set; }
-        public IPhenotype phenotype { get; set; }
-        public IGenotype genotype { get; set; }
         public IDevelopmentMethod developmentMethod { get; set; }
         public IAdultSelectionStrategy adultSelectionStrategy { get; set; }
         public ParentSelectionStrategy parentSelectionStrategy { get; set; }
+        public IGeneticOperators geneticOperators { get; set; }
 
-        public EA()
+        public List<Individual> population;
+
+        public EA(List<Individual> initialPopulation, int maxNumOfGenerations, int maxFitness)
         {
-
+            this.population = initialPopulation;
+            this.maxNumOfGenerations = maxNumOfGenerations;
+            this.maxFitness = maxFitness;
         }
 
         public void Run()
@@ -39,10 +42,7 @@ namespace EA
                 //Develop (Genotypes -> Phenotypes)
 
                 //Fitness testing
-                foreach (IPhenotype phenotype in phenotypes)
-                {
-                    fitnessCalculator.CalculateFitness(phenotype);
-                }
+                
 
                 //Adult selection
 

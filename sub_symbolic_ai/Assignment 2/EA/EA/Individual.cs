@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    public interface IGenotype
+    public abstract class Individual
     {
-        IPhenotype developedPhenotype { get; set; }
+        public double fitness { get; set; }
+
     }
 }

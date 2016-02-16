@@ -16,35 +16,37 @@ namespace EATesting
         [TestMethod]
         public void BinaryMutationTest()
         {
-            BinaryGenotype bg = new BinaryGenotype(new int[] { 0, 0, 0, 0 });
-            GeneticOperators.BitVector_Mutate(bg, 0.6);
-            DebugBinaryVector(bg.binaryVector);
+            BinaryIndividual bg = new BinaryIndividual(new int[] { 0, 0, 0, 0 });
+            BinaryGeneticOperator bgo = new BinaryGeneticOperator();
+            bgo.Mutate(bg, 0.6);
+            DebugBinaryVector(bg.genotype);
         }
 
         [TestMethod]
         public void BinaryCrossoverTest()
         {
-            BinaryGenotype bg1 = new BinaryGenotype(new int[] { 0, 0, 0, 0 });
-            BinaryGenotype bg2 = new BinaryGenotype(new int[] { 0, 1, 0, 1 });
-            BinaryGenotype bg3 = new BinaryGenotype(new int[] { 0, 0, 1, 0 });
-            BinaryGenotype bg4 = new BinaryGenotype(new int[] { 0, 0, 0, 1 });
-            BinaryGenotype bg5 = new BinaryGenotype(new int[] { 1, 0, 0, 0 });
-            BinaryGenotype bg6 = new BinaryGenotype(new int[] { 0, 1, 1, 0 });
+            BinaryIndividual bg1 = new BinaryIndividual(new int[] { 0, 0, 0, 0 });
+            BinaryIndividual bg2 = new BinaryIndividual(new int[] { 0, 1, 0, 1 });
+            BinaryIndividual bg3 = new BinaryIndividual(new int[] { 0, 0, 1, 0 });
+            BinaryIndividual bg4 = new BinaryIndividual(new int[] { 0, 0, 0, 1 });
+            BinaryIndividual bg5 = new BinaryIndividual(new int[] { 1, 0, 0, 0 });
+            BinaryIndividual bg6 = new BinaryIndividual(new int[] { 0, 1, 1, 0 });
 
-            BinaryGenotype res = GeneticOperators.BitVector_OnePointCrossOverTesting(bg1, bg2, 2);
-            CollectionAssert.AreEqual(new int[] { 0, 0, 0, 1 }, res.binaryVector);
+            BinaryIndividual res = BinaryGeneticOperator.BitVector_OnePointCrossOverTesting(bg1, bg2, 2);
+            CollectionAssert.AreEqual(new int[] { 0, 0, 0, 1 }, res.genotype);
 
-            res = GeneticOperators.BitVector_OnePointCrossOverTesting(bg1, bg2, 2);
-            CollectionAssert.AreEqual(new int[] { 0, 0, 0, 1 }, res.binaryVector);
+            res = BinaryGeneticOperator.BitVector_OnePointCrossOverTesting(bg1, bg2, 2);
+            CollectionAssert.AreEqual(new int[] { 0, 0, 0, 1 }, res.genotype);
 
-            res = GeneticOperators.BitVector_OnePointCrossOverTesting(bg1, bg2, 3);
-            CollectionAssert.AreEqual(new int[] { 0, 0, 0, 1 }, res.binaryVector);
+            res = BinaryGeneticOperator.BitVector_OnePointCrossOverTesting(bg1, bg2, 3);
+            DebugBinaryVector(res.genotype);
+            CollectionAssert.AreEqual(new int[] { 0, 0, 0, 1 }, res.genotype);
 
-            res = GeneticOperators.BitVector_OnePointCrossOverTesting(bg2, bg3, 2);
-            CollectionAssert.AreEqual(new int[] { 0, 1, 1, 0 }, res.binaryVector);
+            res = BinaryGeneticOperator.BitVector_OnePointCrossOverTesting(bg2, bg3, 2);
+            CollectionAssert.AreEqual(new int[] { 0, 1, 1, 0 }, res.genotype);
 
-            res = GeneticOperators.BitVector_OnePointCrossOverTesting(bg5, bg6, 1);
-            CollectionAssert.AreEqual(new int[] { 1, 1, 1, 0 }, res.binaryVector);
+            res = BinaryGeneticOperator.BitVector_OnePointCrossOverTesting(bg5, bg6, 1);
+            CollectionAssert.AreEqual(new int[] { 1, 1, 1, 0 }, res.genotype);
         }
 
 
