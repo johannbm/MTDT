@@ -10,5 +10,6 @@ namespace EA
     {
         public double fitness { get; set; }
 
+        public abstract Individual Clone();
     }
 }

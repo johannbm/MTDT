@@ -16,12 +16,9 @@ namespace EA
             this.goal = goal;
         }
 
-        public void CalculateAndSetFitness(Individual[] individuals)
+        public void CalculateAndSetFitness(List<Individual> individuals)
         {
-            foreach (Individual i in individuals)
-            {
-                CalculateAndSetFitness(i);
-            }
+            individuals.ForEach(x => CalculateAndSetFitness(x));
         }
 
         public void CalculateAndSetFitness(Individual individual)

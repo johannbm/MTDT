@@ -9,5 +9,6 @@ namespace EA
     public interface IDevelopmentMethod
     {
         void DevelopGenotype(Individual genotype);
+        void DevelopGenotypes(List<Individual> genotypes);
     }
 }

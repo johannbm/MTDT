@@ -13,10 +13,22 @@ namespace EATesting
     {
 
         [TestMethod]
+        public void TestCloning()
+        {
+            Individual i = new BinaryIndividual(new int[] { 1, 1, 1 });
+            Individual i2 = i.Clone();
+            new BinaryGeneticOperator().Mutate(i2, 1.0);
+
+            Console.WriteLine(i.ToString());
+            Console.WriteLine(i2.ToString());
+
+        }
+
+        [TestMethod]
         public void TestOneMax()
         {
             OneMaxFitnessCalculator ofc = new OneMaxFitnessCalculator(new int[] { 1, 1, 1 });
-            BinaryIndividual bi = new BinaryIndividual(new int[] { 1,1,1});
+            Individual bi = new BinaryIndividual(new int[] { 1,1,1});
             BinaryDevelopment bd = new BinaryDevelopment();
             bd.DevelopGenotype(bi);
 

@@ -9,13 +9,13 @@ namespace EA
     public class SigmaScalingSelection : ParentSelectionStrategy
     {
 
-        public override Dictionary<IPhenotype, double> ScaleValues(List<IPhenotype> candidates)
+        public override Dictionary<Individual, double> ScaleValues(List<Individual> candidates)
         {
-            Dictionary<IPhenotype, double> scaledValues = new Dictionary<IPhenotype, double>();
+            Dictionary<Individual, double> scaledValues = new Dictionary<Individual, double>();
             double mean = Utility.GetFitnessAverage(candidates);
             double std = Utility.GetStandardDeviation(candidates);
 
-            foreach (IPhenotype p in candidates)
+            foreach (Individual p in candidates)
             {
                 scaledValues.Add(p, GetSigmaScaledValue(p.fitness, mean, std));
             }

@@ -11,6 +11,10 @@ namespace EA
 
         private static Random random;
 
+        public static Individual GetBestIndividual(List<Individual> individuals)
+        {
+            return individuals.Aggregate((i1, i2) => i1.fitness > i2.fitness ? i1 : i2);
+        }
 
         public static Random GetRandom()
         {
@@ -21,32 +25,32 @@ namespace EA
             return random;
         }
 
-        public static double GetFitnessSum(List<IPhenotype> phenotypes)
+        public static double GetFitnessSum(List<Individual> individual)
         {
-            return phenotypes.Sum(x => x.fitness);
+            return individual.Sum(x => x.fitness);
         }
 
-        public static double GetFitnessAverage(List<IPhenotype> phenotypes)
+        public static double GetFitnessAverage(List<Individual> individual)
         {
-            return GetFitnessSum(phenotypes) / phenotypes.Count;
+            return GetFitnessSum(individual) / individual.Count;
         }
 
-        public static double GetVariance(List<IPhenotype> phenotypes)
+        public static double GetVariance(List<Individual> individual)
         {
             double squaredDifferenceSum = 0;
-            double mean = GetFitnessAverage(phenotypes);
+            double mean = GetFitnessAverage(individual);
 
-            foreach (IPhenotype p in phenotypes)
+            foreach (Individual p in individual)
             {
                 squaredDifferenceSum += Math.Pow(p.fitness - mean, 2);
             }
 
-            return squaredDifferenceSum / phenotypes.Count;
+            return squaredDifferenceSum / individual.Count;
         }
 
-        public static double GetStandardDeviation(List<IPhenotype> phenotypes)
+        public static double GetStandardDeviation(List<Individual> individual)
         {
-            return Math.Sqrt(GetVariance(phenotypes));
+            return Math.Sqrt(GetVariance(individual));
         }
     }
 }

@@ -26,12 +26,12 @@ namespace EA
         }
 
 
-        public override List<IPhenotype> selectParents(List<IPhenotype> candidates, int numberOfSelections)
+        public override List<Individual> selectParents(List<Individual> candidates, int numberOfSelections)
         {
-            List<IPhenotype> candidatesCopy = new List<IPhenotype>(candidates);
-            List<IPhenotype> winners = new List<IPhenotype>();
+            List<Individual> candidatesCopy = new List<Individual>(candidates);
+            List<Individual> winners = new List<Individual>();
 
-            List<IPhenotype> participants = null;
+            List<Individual> participants = null;
 
             while (winners.Count < numberOfSelections)
             {
@@ -47,7 +47,7 @@ namespace EA
                     return winners;
                 }
 
-                IPhenotype bestParticipant = participants.Aggregate((i1, i2) => i1.fitness > i2.fitness ? i1 : i2);
+                Individual bestParticipant = Utility.GetBestIndividual(participants);
 
 
                 switch (tournamentType)
@@ -81,9 +81,9 @@ namespace EA
             return winners;
         }
 
-        private List<IPhenotype> createTournamentGroup(List<IPhenotype> candidates)
+        private List<Individual> createTournamentGroup(List<Individual> candidates)
         {
-            List<IPhenotype> participants = new List<IPhenotype>();
+            List<Individual> participants = new List<Individual>();
 
             for (int i = 0; i < groupSize; i++)
             {

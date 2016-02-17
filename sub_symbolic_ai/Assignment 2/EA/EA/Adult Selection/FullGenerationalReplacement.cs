@@ -8,7 +8,7 @@ namespace EA
 {
     public class FullGenerationalReplacement : IAdultSelectionStrategy
     {
-        public List<IPhenotype> adultSelection(List<IPhenotype> adults, List<IPhenotype> children)
+        public List<Individual> adultSelection(List<Individual> adults, List<Individual> children)
         {
             return children;
         }

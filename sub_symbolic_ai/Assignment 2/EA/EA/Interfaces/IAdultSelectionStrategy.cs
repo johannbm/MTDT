@@ -8,6 +8,6 @@ namespace EA
 {
     interface IAdultSelectionStrategy
     {
-        List<IPhenotype> adultSelection(List<IPhenotype> adults, List<IPhenotype> children);
+        List<Individual> adultSelection(List<Individual> adults, List<Individual> children);
     }
 }

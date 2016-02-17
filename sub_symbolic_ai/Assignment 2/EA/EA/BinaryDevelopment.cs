@@ -8,6 +8,11 @@ namespace EA
 {
     public class BinaryDevelopment : IDevelopmentMethod
     {
+        public void DevelopGenotypes(List<Individual> genotypes)
+        {
+            genotypes.ForEach(x => DevelopGenotype(x));
+        }
+
         public void DevelopGenotype(Individual individual)
         {
             BinaryIndividual binaryIndividual = ((BinaryIndividual)individual);

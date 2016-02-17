@@ -8,8 +8,11 @@ namespace EA
 {
     public class GenerationalMixing : IAdultSelectionStrategy
     {
-        public List<IPhenotype> adultSelection(List<IPhenotype> adults, List<IPhenotype> children)
+        public List<Individual> adultSelection(List<Individual> adults, List<Individual> children)
         {
+            if (adults.Count == 0)
+                return children;
+
             int populationSize = adults.Count;
 
             adults.AddRange(children);

@@ -10,25 +10,25 @@ namespace EA
     {
 
 
-        public virtual List<IPhenotype> selectParents(List<IPhenotype> candidates, int numberOfParents)
+        public virtual List<Individual> selectParents(List<Individual> candidates, int amountToCreate)
         {
             double averageFitness = Utility.GetFitnessAverage(candidates);
             double standardDeviation = Utility.GetStandardDeviation(candidates);
 
-            Dictionary<IPhenotype, double> scaledValues = ScaleValues(candidates);
+            Dictionary<Individual, double> scaledValues = ScaleValues(candidates);
 
             double total = scaledValues.Sum(x => x.Value);
 
             RouletteWheel rw = new RouletteWheel();
 
-            foreach (IPhenotype key in scaledValues.Keys.ToList())
+            foreach (Individual key in scaledValues.Keys.ToList())
             {
                 rw.AddPhenotype(key, scaledValues[key] / total);
             }
 
-            List<IPhenotype> winners = new List<IPhenotype>();
+            List<Individual> winners = new List<Individual>();
 
-            for (int i = 0; i < numberOfParents; i++)
+            for (int i = 0; i < amountToCreate; i++)
             {
                 winners.Add(rw.spinWheel());
             }
@@ -38,7 +38,7 @@ namespace EA
 
 
 
-        public virtual Dictionary<IPhenotype, double> ScaleValues(List<IPhenotype> candidates)
+        public virtual Dictionary<Individual, double> ScaleValues(List<Individual> candidates)
         {
             return null;
         }

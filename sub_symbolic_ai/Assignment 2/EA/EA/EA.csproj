@@ -56,13 +56,10 @@
     <Compile Include="Parent Selection\BoltzmannScalingSelection.cs" />
     <Compile Include="Parent Selection\FitnessProportionateSelection.cs" />
     <Compile Include="Interfaces\IFitnessCalculator.cs" />
-    <Compile Include="Interfaces\IGenotype.cs" />
-    <Compile Include="Interfaces\IPhenotype.cs" />
     <Compile Include="Interfaces\IAdultSelectionStrategy.cs" />
     <Compile Include="Adult Selection\OverProduction.cs" />
     <Compile Include="Parent Selection\ParentSelectionStrategy.cs" />
     <Compile Include="Parent Selection\SigmaScalingSelection.cs" />
-    <Compile Include="BinaryPhenotype.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Parent Selection\RouletteWheel.cs" />

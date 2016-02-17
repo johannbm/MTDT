@@ -10,6 +10,6 @@ namespace EA
     {
         double CalculateFitness(Individual individual);
         void CalculateAndSetFitness(Individual individual);
-        void CalculateAndSetFitness(Individual[] individual);
+        void CalculateAndSetFitness(List<Individual> individual);
     }
 }

@@ -29,5 +29,24 @@ namespace EA
             this.genotype = binaryVector;
         }
 
+        public override string ToString()
+        {
+            string s = "Fitness: " + fitness;
+            s += "Genotype: ";
+            foreach (int i in genotype)
+            {
+                s += i;
+            }
+           
+
+            return s;
+        }
+
+        public override Individual Clone()
+        {
+            BinaryIndividual clone = new BinaryIndividual((int[])genotype.Clone());
+            clone.fitness = this.fitness;
+            return clone;
+        }
     }
 }

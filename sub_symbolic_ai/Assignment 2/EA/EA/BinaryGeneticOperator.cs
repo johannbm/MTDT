@@ -9,12 +9,10 @@ namespace EA
     public class BinaryGeneticOperator : IGeneticOperators
     {
 
-
         public void Mutate(Individual individual, double mutationProbability)
         {
-            BinaryIndividual binaryIndividual = (BinaryIndividual)individual;
+            BinaryIndividual binaryIndividual = ((BinaryIndividual)individual);
 
-            int[] newBinaryVector = new int[binaryIndividual.genotype.Length];
             int[] binaryVector = binaryIndividual.genotype;
 
             for (int i = 0; i < binaryVector.Length; i++)
@@ -25,6 +23,24 @@ namespace EA
                 }
             }
         }
+
+        //public Individual Mutate(Individual individual, double mutationProbability)
+        //{
+        //    BinaryIndividual binaryIndividual =  ((BinaryIndividual)individual);
+
+        //    int[] newBinaryVector = new int[binaryIndividual.genotype.Length];
+        //    int[] binaryVector = binaryIndividual.genotype;
+
+        //    for (int i = 0; i < binaryVector.Length; i++)
+        //    {
+        //        if (Utility.GetRandom().NextDouble() < mutationProbability)
+        //        {
+        //            newBinaryVector[i] = (binaryVector[i] == 0) ? 1 : 0;
+        //        }
+        //    }
+
+        //    return new BinaryIndividual(newBinaryVector);
+        //}
 
         public Individual OnePointCrossOver(Individual individual1, Individual individual2)
         {
@@ -63,7 +79,6 @@ namespace EA
             return new BinaryIndividual(newBitVector);
         }
 
-
-
+        
     }
 }

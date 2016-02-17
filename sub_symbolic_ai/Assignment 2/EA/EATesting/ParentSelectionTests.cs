@@ -27,19 +27,21 @@ namespace EATesting
             }
         }
 
+
+
         [TestMethod]
         public void TournamentSelectionDiscardNone()
         {
-            List<IPhenotype> adults = new List<IPhenotype>();
+            List<Individual> adults = new List<Individual>();
 
             for (int i  = 0; i < 20; i++)
             {
-                adults.Add(new BinaryPhenotype(i));
+                //adults.Add(new BinaryIndividual((i));
             }
 
             TournamentSelection ts = new TournamentSelection(5, 0.0);
             ts.tournamentType = TournamentType.DiscardNone;
-            List<IPhenotype> results = ts.selectParents(adults, 10);
+            List<Individual> results = ts.selectParents(adults, 10);
 
             DebugPhenotypeList(results);
 
@@ -49,16 +51,16 @@ namespace EATesting
         [TestMethod]
         public void TournamentSelectionDiscardWinner()
         {
-            List<IPhenotype> adults = new List<IPhenotype>();
+            List<Individual> adults = new List<Individual>();
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new BinaryPhenotype(i));
+                //adults.Add(new BinaryIndividual((double)i));
             }
 
             TournamentSelection ts = new TournamentSelection(5, 0.0);
             ts.tournamentType = TournamentType.DiscardWinner;
-            List<IPhenotype> results = ts.selectParents(adults, 10);
+            List<Individual> results = ts.selectParents(adults, 10);
 
             DebugPhenotypeList(results);
             Console.WriteLine(adults.Count);
@@ -70,11 +72,11 @@ namespace EATesting
         [TestMethod]
         public void RouletteTest()
         {
-            List<IPhenotype> adults = new List<IPhenotype>();
+            List<Individual> adults = new List<Individual>();
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new BinaryPhenotype(i));
+                //adults.Add(new BinaryIndividual((double)i));
             }
 
             RouletteWheel rw = new RouletteWheel();
@@ -90,7 +92,7 @@ namespace EATesting
             rw.AddPhenotype(adults[8], 0.1);
             rw.AddPhenotype(adults[9], 0.1);
 
-            IPhenotype res = rw.spinWheel(0.01);
+            Individual res = rw.spinWheel(0.01);
             Assert.AreEqual(adults[0], res);
             res = rw.spinWheel(0.10001);
             Assert.AreEqual(adults[1], res);
@@ -137,28 +139,30 @@ namespace EATesting
         [TestMethod]
         public void FitnessProportionateTest()
         {
-            List<IPhenotype> adults = new List<IPhenotype>();
-            Dictionary<IPhenotype, int> occurances = new Dictionary<IPhenotype, int>();
+            List<Individual> adults = new List<Individual>();
+            Dictionary<Individual, int> occurances = new Dictionary<Individual, int>();
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new BinaryPhenotype(i));
+                Individual ind = new BinaryIndividual(0);
+                ind.fitness = i;
+                adults.Add(ind);
                 occurances.Add(adults[i], 0);
             }
 
             for (int i = 0; i < 50000; i++)
             {
                 FitnessProportionateSelection fps = new FitnessProportionateSelection();
-                List<IPhenotype> res = fps.selectParents(adults, 5);
+                List<Individual> res = fps.selectParents(adults, 5);
 
-                foreach (IPhenotype p in res)
+                foreach (Individual p in res)
                 {
                     occurances[p] += 1;
                 }
 
             }
 
-            foreach(KeyValuePair<IPhenotype, int> entry in occurances)
+            foreach(KeyValuePair<Individual, int> entry in occurances)
             {
                 Console.WriteLine(entry.Key.fitness + " : " + entry.Value);
             }
@@ -170,28 +174,28 @@ namespace EATesting
         [TestMethod]
         public void SigmaScaledFitnessTest()
         {
-            List<IPhenotype> adults = new List<IPhenotype>();
-            Dictionary<IPhenotype, int> occurances = new Dictionary<IPhenotype, int>();
+            List<Individual> adults = new List<Individual>();
+            Dictionary<Individual, int> occurances = new Dictionary<Individual, int>();
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new BinaryPhenotype(i));
+                //adults.Add(new BinaryIndividual((double)i));
                 occurances.Add(adults[i], 0);
             }
 
             for (int i = 0; i < 50000; i++)
             {
                 SigmaScalingSelection sss = new SigmaScalingSelection();
-                List<IPhenotype> res = sss.selectParents(adults, 5);
+                List<Individual> res = sss.selectParents(adults, 5);
 
-                foreach (IPhenotype p in res)
+                foreach (Individual p in res)
                 {
                     occurances[p] += 1;
                 }
 
             }
 
-            foreach (KeyValuePair<IPhenotype, int> entry in occurances)
+            foreach (KeyValuePair<Individual, int> entry in occurances)
             {
                 Console.WriteLine(entry.Key.fitness + " : " + entry.Value);
             }
@@ -200,28 +204,28 @@ namespace EATesting
         [TestMethod]
         public void BoltzmannScaledFitnessTest()
         {
-            List<IPhenotype> adults = new List<IPhenotype>();
-            Dictionary<IPhenotype, int> occurances = new Dictionary<IPhenotype, int>();
+            List<Individual> adults = new List<Individual>();
+            Dictionary<Individual, int> occurances = new Dictionary<Individual, int>();
 
             for (int i = 0; i < 20; i++)
             {
-                adults.Add(new BinaryPhenotype(i));
+                //adults.Add(new BinaryIndividual((double)i));
                 occurances.Add(adults[i], 0);
             }
 
             for (int i = 0; i < 50000; i++)
             {
                 BoltzmannScalingSelection bss = new BoltzmannScalingSelection(10);
-                List<IPhenotype> res = bss.selectParents(adults, 5);
+                List<Individual> res = bss.selectParents(adults, 5);
 
-                foreach (IPhenotype p in res)
+                foreach (Individual p in res)
                 {
                     occurances[p] += 1;
                 }
 
             }
 
-            foreach (KeyValuePair<IPhenotype, int> entry in occurances)
+            foreach (KeyValuePair<Individual, int> entry in occurances)
             {
                 Console.WriteLine(entry.Key.fitness + " : " + entry.Value);
             }
@@ -229,9 +233,9 @@ namespace EATesting
 
 
 
-        private void DebugPhenotypeList(List<IPhenotype> list)
+        private void DebugPhenotypeList(List<Individual> list)
         {
-            foreach(BinaryPhenotype p in list)
+            foreach(BinaryIndividual p in list)
                 Console.WriteLine(p.fitness);
         }
 

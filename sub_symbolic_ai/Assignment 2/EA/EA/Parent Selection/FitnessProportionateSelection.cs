@@ -9,14 +9,14 @@ namespace EA
     public class FitnessProportionateSelection : ParentSelectionStrategy
     {
 
-        public override List<IPhenotype> selectParents(List<IPhenotype> candidates, int numberOfParents)
+        public override List<Individual> selectParents(List<Individual> candidates, int numberOfParents)
         {
             double fitnessSum = Utility.GetFitnessSum(candidates);
-            List<IPhenotype> winners = new List<IPhenotype>();
+            List<Individual> winners = new List<Individual>();
 
             RouletteWheel rw = new RouletteWheel();
 
-            foreach (IPhenotype p in candidates)
+            foreach (Individual p in candidates)
             {
                 rw.AddPhenotype(p, p.fitness / fitnessSum);
             }
