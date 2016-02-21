@@ -48,5 +48,16 @@ namespace EA
             clone.fitness = this.fitness;
             return clone;
         }
+
+        public override string ToPhenotypeString()
+        {
+            string s = "";
+            foreach (int i in phenotype)
+            {
+                s += i;
+            }
+
+            return s;
+        }
     }
 }

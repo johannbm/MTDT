@@ -31,6 +31,7 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.problemComboBox = new System.Windows.Forms.ComboBox();
             this.problemLabel = new System.Windows.Forms.Label();
             this.adultSelectionLabel = new System.Windows.Forms.Label();
@@ -55,6 +56,13 @@
             this.startButton = new System.Windows.Forms.Button();
             this.eaBackgroundWorker = new System.ComponentModel.BackgroundWorker();
             this.stopButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.showRunButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.logListView = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.errorChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mutationRateInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crossoverRateInput)).BeginInit();
@@ -64,6 +72,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.childPopulationInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.adultPopulationInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.initialPopulationInput)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // problemComboBox
@@ -145,15 +154,21 @@
             this.errorChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.errorChart.Legends.Add(legend1);
-            this.errorChart.Location = new System.Drawing.Point(38, 276);
+            this.errorChart.Location = new System.Drawing.Point(12, 256);
             this.errorChart.Name = "errorChart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "Best Individual";
             series1.XValueType = System.Windows.Forms.DataVisualization.Charting.ChartValueType.Int32;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.ErrorBar;
+            series2.Legend = "Legend1";
+            series2.Name = "Population Average";
+            series2.YValuesPerPoint = 3;
             this.errorChart.Series.Add(series1);
-            this.errorChart.Size = new System.Drawing.Size(975, 300);
+            this.errorChart.Series.Add(series2);
+            this.errorChart.Size = new System.Drawing.Size(1016, 341);
             this.errorChart.TabIndex = 6;
             this.errorChart.Text = "chart1";
             // 
@@ -410,11 +425,70 @@
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.showRunButton);
+            this.groupBox3.Controls.Add(this.button1);
+            this.groupBox3.Controls.Add(this.logListView);
+            this.groupBox3.Location = new System.Drawing.Point(646, 24);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(382, 226);
+            this.groupBox3.TabIndex = 18;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Log";
+            // 
+            // showRunButton
+            // 
+            this.showRunButton.Location = new System.Drawing.Point(220, 53);
+            this.showRunButton.Name = "showRunButton";
+            this.showRunButton.Size = new System.Drawing.Size(105, 23);
+            this.showRunButton.TabIndex = 2;
+            this.showRunButton.Text = "Show Run";
+            this.showRunButton.UseVisualStyleBackColor = true;
+            this.showRunButton.Click += new System.EventHandler(this.showRunButton_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(220, 24);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(105, 23);
+            this.button1.TabIndex = 1;
+            this.button1.Text = "Show Phenotype";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
+            // logListView
+            // 
+            this.logListView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3});
+            this.logListView.FullRowSelect = true;
+            this.logListView.Location = new System.Drawing.Point(6, 19);
+            this.logListView.Name = "logListView";
+            this.logListView.Size = new System.Drawing.Size(208, 201);
+            this.logListView.TabIndex = 0;
+            this.logListView.UseCompatibleStateImageBehavior = false;
+            this.logListView.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Generations";
+            this.columnHeader2.Width = 72;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Time";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 609);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
             this.Controls.Add(this.groupBox2);
@@ -433,6 +507,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.childPopulationInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.adultPopulationInput)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.initialPopulationInput)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -463,5 +538,12 @@
         private System.Windows.Forms.Button startButton;
         private System.ComponentModel.BackgroundWorker eaBackgroundWorker;
         private System.Windows.Forms.Button stopButton;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.ListView logListView;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.ColumnHeader columnHeader3;
+        private System.Windows.Forms.Button showRunButton;
+        private System.Windows.Forms.Button button1;
     }
 }

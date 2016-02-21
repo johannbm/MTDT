@@ -34,6 +34,7 @@ namespace EA
         private void startButton_Click(object sender, EventArgs e)
         {
             errorChart.Series["Best Individual"].Points.Clear();
+            errorChart.Series["Population Average"].YValuesPerPoint = 3;
             errorChart.ChartAreas[0].AxisX.IsMarginVisible = false;
             errorChart.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             errorChart.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
@@ -116,22 +117,7 @@ namespace EA
 
         
 
-        private void eaBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
-        {
-            ((EA)e.Argument).Run(eaBackgroundWorker);
-        }
-
-        private void eaBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            Tuple<int, double> eaState = (Tuple<int, double>)e.UserState;
-
-            if (eaState.Item1 > errorChart.ChartAreas[0].AxisX.Maximum)
-            {
-                errorChart.ChartAreas[0].AxisX.Maximum = eaState.Item1;
-            }
-
-            errorChart.Series["Best Individual"].Points.AddXY(eaState.Item1, eaState.Item2);
-        }
+        
 
         private void problemComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -250,11 +236,35 @@ namespace EA
             }
         }
 
+        private void eaBackgroundWorker_DoWork(object sender, DoWorkEventArgs e)
+        {
+            e.Result = ((EA)e.Argument).Run(eaBackgroundWorker);
+        }
+
+        private void eaBackgroundWorker_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+            GenerationLog eaLog = e.UserState as GenerationLog;
+
+            if (eaLog.generation > errorChart.ChartAreas[0].AxisX.Maximum)
+            {
+                errorChart.ChartAreas[0].AxisX.Maximum = eaLog.generation;
+            }
+
+            errorChart.Series["Population Average"].Points.AddXY(eaLog.generation, eaLog.avgFitness,
+                                                                 eaLog.avgFitness - eaLog.std,
+                                                                 eaLog.avgFitness + eaLog.std);
+            errorChart.Series["Best Individual"].Points.AddXY(eaLog.generation, eaLog.bestFitness);
+        }
+
 
         private void eaBackgroundWorker_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             startButton.Enabled = true;
             stopButton.Enabled = false;
+            if (!e.Cancelled && e.Result != null)
+            {
+                AddEaRunEntry(e.Result as EALog);
+            }
         }
 
         private void stopButton_Click(object sender, EventArgs e)
@@ -262,5 +272,21 @@ namespace EA
             eaBackgroundWorker.CancelAsync();
         }
 
+        public void AddEaRunEntry(EALog log)
+        {
+            ListViewItem lvi = new ListViewItem(log.ID.ToString());
+            lvi.SubItems.Add(log.numberOfGens.ToString());
+            lvi.SubItems.Add(log.time.ToString());
+            lvi.Tag = log;
+
+            logListView.Items.Add(lvi);
+        }
+
+        private void showRunButton_Click(object sender, EventArgs e)
+        {
+
+            ShowRunForm swf = new ShowRunForm(((EALog)logListView.SelectedItems[0].Tag).generationLog);
+            swf.ShowDialog();
+        }
     }
 }

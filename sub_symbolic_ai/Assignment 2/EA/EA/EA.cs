@@ -33,17 +33,19 @@ namespace EA
             previousPopulation = new List<Individual>();
         }
 
-        public List<double> Run(BackgroundWorker bgWorker)
+        public EALog Run(BackgroundWorker bgWorker)
         {
             //Initialize random population (Genotypes)
             int numOfGenerations = 0;
             double bestFitness = 0;
-            List<double> log = new List<double>();
+            EALog eaLog = new EALog();
 
             while (numOfGenerations < maxNumOfGenerations)
             {
                 if (bgWorker.CancellationPending)
                     return null;
+
+                GenerationLog genLog = new GenerationLog();
 
                 //Develop (Genotypes -> Phenotypes)
                 developmentMethod.DevelopGenotypes(population);
@@ -51,12 +53,21 @@ namespace EA
                 //Fitness testing
                 fitnessCalculator.CalculateAndSetFitness(population);
 
-                bestFitness = Utility.GetBestIndividual(population).fitness;
+                Individual bestIndividual = Utility.GetBestIndividual(population);
+
+                bestFitness = bestIndividual.fitness;
+
+                genLog.bestFitness = bestFitness;
+                genLog.avgFitness = Utility.GetFitnessAverage(population);
+                genLog.generation = numOfGenerations;
+                genLog.std = Utility.GetStandardDeviation(population);
+                genLog.bestPhenotype = bestIndividual.ToPhenotypeString();
+                eaLog.AddGenerationLog(genLog);
 
                 // Report findings to bgWorker
-                bgWorker.ReportProgress(0, new Tuple<int, double>(numOfGenerations, bestFitness));
+                bgWorker.ReportProgress(0, genLog);
 
-                log.Add(bestFitness);
+                //log.Add(bestFitness);
 
                 if (bestFitness >= maxFitness)
                 {
@@ -70,20 +81,25 @@ namespace EA
                 //Parent selection
                 population = parentSelectionStrategy.selectParents(population, adultPopulation);
 
+                
+
                 //Mutation
                 previousPopulation = Utility.ClonePopulation(population);
                 population = ModifyGenetics(population);
 
-                
 
                 numOfGenerations++;
+
                 
             }
             developmentMethod.DevelopGenotypes(population);
             fitnessCalculator.CalculateAndSetFitness(population);
             Individual best = Utility.GetBestIndividual(population);
 
-            return log;
+            eaLog.numberOfGens = numOfGenerations;
+            eaLog.time = 0.500;
+
+            return eaLog;
 
         }
 

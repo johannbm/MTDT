@@ -50,6 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Development\SymbolDevelopment.cs" />
+    <Compile Include="EALog.cs" />
     <Compile Include="Fitness Calculation\LOLZFitnessCalculator.cs" />
     <Compile Include="Fitness Calculation\SSCalculator.cs" />
     <Compile Include="Forms\BoltzmannForm.cs">
@@ -111,6 +112,12 @@
     <Compile Include="Forms\TournamentForm.Designer.cs">
       <DependentUpon>TournamentForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ShowRunForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ShowRunForm.Designer.cs">
+      <DependentUpon>ShowRunForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utility.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -137,6 +144,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\TournamentForm.resx">
       <DependentUpon>TournamentForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ShowRunForm.resx">
+      <DependentUpon>ShowRunForm.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
