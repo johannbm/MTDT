@@ -25,6 +25,8 @@ namespace EA
 
         private double GetSigmaScaledValue(double value, double mean, double std)
         {
+            if (std == 0)
+                return 1;
             return 1 + ((value - mean) / (2 * std));
         }
 

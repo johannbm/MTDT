@@ -16,6 +16,15 @@ namespace EA
             return individuals.Aggregate((i1, i2) => i1.fitness > i2.fitness ? i1 : i2);
         }
 
+        public static List<Individual> ClonePopulation(List<Individual> individuals)
+        {
+            List<Individual> newPopulation = new List<Individual>();
+
+            individuals.ForEach(x => newPopulation.Add(x.Clone()));
+
+            return newPopulation;
+        }
+
         public static Random GetRandom()
         {
             if (random == null)

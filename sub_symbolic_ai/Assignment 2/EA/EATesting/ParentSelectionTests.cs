@@ -179,6 +179,9 @@ namespace EATesting
 
             for (int i = 0; i < 20; i++)
             {
+                Individual ind = new BinaryIndividual(10);
+                ind.fitness = 5;
+                adults.Add(ind);
                 //adults.Add(new BinaryIndividual((double)i));
                 occurances.Add(adults[i], 0);
             }

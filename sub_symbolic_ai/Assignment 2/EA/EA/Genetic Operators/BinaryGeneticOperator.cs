@@ -47,7 +47,6 @@ namespace EA
             BinaryIndividual binaryIndividual1 = (BinaryIndividual)individual1;
             BinaryIndividual binaryIndividual2 = (BinaryIndividual)individual2;
 
-
             int point = Utility.GetRandom().Next(1, binaryIndividual1.genotype.Length - 1);
 
             int[] newBitVector = new int[binaryIndividual1.genotype.Length];

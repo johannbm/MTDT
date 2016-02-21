@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    public class OneMaxFitnessCalculator : IFitnessCalculator
+    public class OneMaxFitnessCalculator : FitnessCalculator
     {
 
         public int[] goal { get; set; }
@@ -16,17 +16,7 @@ namespace EA
             this.goal = goal;
         }
 
-        public void CalculateAndSetFitness(List<Individual> individuals)
-        {
-            individuals.ForEach(x => CalculateAndSetFitness(x));
-        }
-
-        public void CalculateAndSetFitness(Individual individual)
-        {
-            individual.fitness = CalculateFitness(individual);
-        }
-
-        public double CalculateFitness(Individual individual)
+        public override double CalculateFitness(Individual individual)
         {
             int score = 0;
             int[] phenotype = ((BinaryIndividual)individual).phenotype;

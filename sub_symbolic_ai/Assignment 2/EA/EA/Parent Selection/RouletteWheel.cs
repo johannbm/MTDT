@@ -44,7 +44,8 @@ namespace EA
                 }
             }
 
-           
+            if (winner == null)
+                Console.WriteLine("no winner");
 
             return winner;
         }

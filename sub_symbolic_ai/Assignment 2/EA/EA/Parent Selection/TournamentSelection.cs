@@ -16,13 +16,12 @@ namespace EA
         int groupSize { get; set; }
         double winningProbability { get; set; }
         public TournamentType tournamentType { get; set; }
-        Random r { get; }
 
         public TournamentSelection(int groupSize, double winningProbability)
         {
             this.groupSize = groupSize;
             this.winningProbability = winningProbability;
-            r = new Random();
+            tournamentType = TournamentType.DiscardNone;
         }
 
 
@@ -40,7 +39,6 @@ namespace EA
                 try
                 {
                     participants = createTournamentGroup(candidatesCopy);
-                    Console.WriteLine(participants.Count);
                 }
                 catch (ArgumentOutOfRangeException e)
                 {
@@ -67,13 +65,13 @@ namespace EA
 
                 // Choose best with probability 1 - winningProbability, 
                 // or else choose randomly from remaining participants.
-                if (r.NextDouble() <= winningProbability)
+                if (Utility.GetRandom().NextDouble() <= winningProbability)
                 {
                     winners.Add(bestParticipant);
                 }
                 else
                 {
-                    winners.Add(participants[r.Next(0, participants.Count)]);
+                    winners.Add(participants[Utility.GetRandom().Next(0, participants.Count)]);
                 }
             }
 
@@ -87,7 +85,7 @@ namespace EA
 
             for (int i = 0; i < groupSize; i++)
             {
-                participants.Add(candidates[r.Next(0, candidates.Count)]);
+                participants.Add(candidates[Utility.GetRandom().Next(0, candidates.Count)]);
             }
 
             return participants;

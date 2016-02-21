@@ -6,14 +6,10 @@ using System.Threading.Tasks;
 
 namespace EA
 {
-    public class BinaryDevelopment : IDevelopmentMethod
+    public class BinaryDevelopment : DevelopmentMethod
     {
-        public void DevelopGenotypes(List<Individual> genotypes)
-        {
-            genotypes.ForEach(x => DevelopGenotype(x));
-        }
-
-        public void DevelopGenotype(Individual individual)
+        
+        public override void DevelopGenotype(Individual individual)
         {
             BinaryIndividual binaryIndividual = ((BinaryIndividual)individual);
             binaryIndividual.phenotype = (int[])binaryIndividual.genotype.Clone();
