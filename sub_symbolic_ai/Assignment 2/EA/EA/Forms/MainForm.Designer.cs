@@ -58,7 +58,6 @@
             this.stopButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.showRunButton = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
             this.logListView = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -428,7 +427,6 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.showRunButton);
-            this.groupBox3.Controls.Add(this.button1);
             this.groupBox3.Controls.Add(this.logListView);
             this.groupBox3.Location = new System.Drawing.Point(646, 24);
             this.groupBox3.Name = "groupBox3";
@@ -439,22 +437,13 @@
             // 
             // showRunButton
             // 
-            this.showRunButton.Location = new System.Drawing.Point(220, 53);
+            this.showRunButton.Location = new System.Drawing.Point(220, 19);
             this.showRunButton.Name = "showRunButton";
             this.showRunButton.Size = new System.Drawing.Size(105, 23);
             this.showRunButton.TabIndex = 2;
             this.showRunButton.Text = "Show Run";
             this.showRunButton.UseVisualStyleBackColor = true;
             this.showRunButton.Click += new System.EventHandler(this.showRunButton_Click);
-            // 
-            // button1
-            // 
-            this.button1.Location = new System.Drawing.Point(220, 24);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(105, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "Show Phenotype";
-            this.button1.UseVisualStyleBackColor = true;
             // 
             // logListView
             // 
@@ -469,6 +458,7 @@
             this.logListView.TabIndex = 0;
             this.logListView.UseCompatibleStateImageBehavior = false;
             this.logListView.View = System.Windows.Forms.View.Details;
+            this.logListView.ItemSelectionChanged += new System.Windows.Forms.ListViewItemSelectionChangedEventHandler(this.logListView_SelectedIndexChanged);
             // 
             // columnHeader1
             // 
@@ -544,6 +534,5 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button showRunButton;
-        private System.Windows.Forms.Button button1;
     }
 }

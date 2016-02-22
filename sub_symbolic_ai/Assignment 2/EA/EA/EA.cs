@@ -38,6 +38,7 @@ namespace EA
             //Initialize random population (Genotypes)
             int numOfGenerations = 0;
             double bestFitness = 0;
+            long startTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
             EALog eaLog = new EALog();
 
             while (numOfGenerations < maxNumOfGenerations)
@@ -97,7 +98,9 @@ namespace EA
             Individual best = Utility.GetBestIndividual(population);
 
             eaLog.numberOfGens = numOfGenerations;
-            eaLog.time = 0.500;
+            long endTime = DateTime.Now.Ticks / TimeSpan.TicksPerMillisecond;
+
+            eaLog.time = (endTime - startTime)/1000.0;
 
             return eaLog;
 

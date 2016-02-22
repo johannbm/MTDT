@@ -34,7 +34,9 @@ namespace EA
         private void startButton_Click(object sender, EventArgs e)
         {
             errorChart.Series["Best Individual"].Points.Clear();
-            errorChart.Series["Population Average"].YValuesPerPoint = 3;
+            errorChart.Series["Population Average"].Points.Clear();
+
+            //errorChart.Series["Population Average"].YValuesPerPoint = 3;
             errorChart.ChartAreas[0].AxisX.IsMarginVisible = false;
             errorChart.ChartAreas[0].CursorX.IsUserSelectionEnabled = true;
             errorChart.ChartAreas[0].CursorY.IsUserSelectionEnabled = true;
@@ -288,5 +290,96 @@ namespace EA
             ShowRunForm swf = new ShowRunForm(((EALog)logListView.SelectedItems[0].Tag).generationLog);
             swf.ShowDialog();
         }
+
+        private void logListView_SelectedIndexChanged(object sender, ListViewItemSelectionChangedEventArgs e)
+        {
+            Console.WriteLine("#selected: " + logListView.SelectedItems.Count);
+            if (e.IsSelected)
+            {
+                if (logListView.SelectedItems.Count > 1)
+                {
+                    List<EALog> logs = new List<EALog>();
+                    for (int i = 0; i < logListView.SelectedItems.Count; i++)
+                    {
+                        logs.Add(logListView.SelectedItems[i].Tag as EALog);
+                    }
+                    ShowMultpleGraphs(logs);
+                }
+                else
+                { 
+                    ShowGraph(logListView.SelectedItems[0].Tag as EALog);
+                }
+            }
+        }
+
+        private void ShowGraph(EALog ealog)
+        {
+            
+            errorChart.Series["Best Individual"].Points.Clear();
+            errorChart.Series["Population Average"].Points.Clear();
+
+            for (int i = 0; i < ealog.generationLog.Count; i++)
+            {
+                GenerationLog gl = ealog.generationLog[i];
+                errorChart.Series["Best Individual"].Points.AddXY(i, gl.bestFitness);
+                errorChart.Series["Population Average"].Points.AddXY(i, gl.avgFitness, gl.avgFitness - gl.std, gl.avgFitness + gl.std);
+            }
+        }
+
+        private void ShowMultpleGraphs(List<EALog> ealogs)
+        {
+            if (ealogs.Count == 0)
+                return;
+
+            Console.WriteLine(errorChart.Series["Best Individual"].Color);
+            errorChart.Series["Best Individual"].Points.Clear();
+            errorChart.Series["Population Average"].Points.Clear();
+
+            
+
+            Console.WriteLine("number of series: " + errorChart.Series.Count);
+
+            int length = errorChart.Series.Count;
+
+            // Remove old series
+            for (int i = 2; i < length; i++)
+            {
+                errorChart.Series.RemoveAt(2);
+            }
+
+            Console.WriteLine("number of series: " + errorChart.Series.Count);
+
+            for (int i = 0; i < ealogs.Count; i++)
+            {
+                errorChart.Series.Add(i.ToString());
+                errorChart.Series[i.ToString()].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+                errorChart.Series[i.ToString()].Color = Color.DarkBlue;
+                errorChart.Series[i.ToString()].IsVisibleInLegend = false;
+
+
+                for (int j = 0; j < ealogs[i].generationLog.Count; j++)
+                {
+                    GenerationLog gl = ealogs[i].generationLog[j];
+                    errorChart.Series[i.ToString()].Points.AddXY(j, gl.bestFitness);
+                    //errorChart.Series["Population Average"].Points.AddXY(i, gl.avgFitness, gl.avgFitness - gl.std, gl.avgFitness + gl.std);
+                }
+            }
+        }
+
+        //private void ShowGraphAverage(List<EALog> logs)
+        //{
+        //    errorChart.Series["Best Individual"].Points.Clear();
+        //    errorChart.Series["Population Average"].Points.Clear();
+
+        //    for (int i = 0; i < logs[0].generationLog.Count; i++)
+        //    {
+        //        double bestFitness = logs.Sum(x => x.generationLog[i].bestFitness) / logs.Count;
+        //        double avgFitness = logs.Sum(x => x.generationLog[i].avgFitness) / logs.Count;
+        //        double std = logs.Sum(x => x.generationLog[i].std) / logs.Count;
+
+        //        errorChart.Series["Best Individual"].Points.AddXY(i, bestFitness);
+        //        errorChart.Series["Population Average"].Points.AddXY(i, avgFitness, avgFitness - std, avgFitness + std);
+        //    }
+        //}
     }
 }
