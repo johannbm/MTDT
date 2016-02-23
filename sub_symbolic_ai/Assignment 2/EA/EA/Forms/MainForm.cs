@@ -320,6 +320,8 @@ namespace EA
             Console.WriteLine("#selected: " + logListView.SelectedItems.Count);
             if (e.IsSelected)
             {
+                ClearExtraSeries();
+
                 if (logListView.SelectedItems.Count > 1)
                 {
                     List<EALog> logs = new List<EALog>();
@@ -333,6 +335,16 @@ namespace EA
                 { 
                     ShowGraph(logListView.SelectedItems[0].Tag as EALog);
                 }
+            }
+        }
+
+        private void ClearExtraSeries()
+        {
+            int length = errorChart.Series.Count;
+
+            for (int i = 2; i < length; i++)
+            {
+                errorChart.Series.RemoveAt(2);
             }
         }
 
@@ -363,13 +375,8 @@ namespace EA
 
             Console.WriteLine("number of series: " + errorChart.Series.Count);
 
-            int length = errorChart.Series.Count;
 
             // Remove old series
-            for (int i = 2; i < length; i++)
-            {
-                errorChart.Series.RemoveAt(2);
-            }
 
             double avgGenerations = ealogs.Sum(x => x.numberOfGens) / ealogs.Count;
             avgGenerationsLabel.Text = "Average number of Generations: " + avgGenerations.ToString();
