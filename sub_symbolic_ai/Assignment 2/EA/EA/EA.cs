@@ -12,7 +12,7 @@ namespace EA
 
         public int maxNumOfGenerations { get; set; }
         public double maxFitness { get; set; }
-        public int amountOfChildrenToCreate { get; set; }
+        //public int amountOfChildrenToCreate { get; set; }
         public double crossOverRate { get; set; }
         public double mutationRate { get; set; }
 
@@ -90,8 +90,6 @@ namespace EA
 
 
                 numOfGenerations++;
-
-                
             }
             developmentMethod.DevelopGenotypes(population);
             fitnessCalculator.CalculateAndSetFitness(population);

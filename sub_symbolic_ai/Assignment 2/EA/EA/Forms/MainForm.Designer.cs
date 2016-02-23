@@ -62,6 +62,8 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.avgGenerationsLabel = new System.Windows.Forms.Label();
+            this.problemInfoTextBox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.errorChart)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mutationRateInput)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.crossoverRateInput)).BeginInit();
@@ -473,11 +475,30 @@
             // 
             this.columnHeader3.Text = "Time";
             // 
+            // avgGenerationsLabel
+            // 
+            this.avgGenerationsLabel.AutoSize = true;
+            this.avgGenerationsLabel.Location = new System.Drawing.Point(451, 232);
+            this.avgGenerationsLabel.Name = "avgGenerationsLabel";
+            this.avgGenerationsLabel.Size = new System.Drawing.Size(0, 13);
+            this.avgGenerationsLabel.TabIndex = 19;
+            // 
+            // problemInfoTextBox
+            // 
+            this.problemInfoTextBox.Location = new System.Drawing.Point(13, 155);
+            this.problemInfoTextBox.Multiline = true;
+            this.problemInfoTextBox.Name = "problemInfoTextBox";
+            this.problemInfoTextBox.ReadOnly = true;
+            this.problemInfoTextBox.Size = new System.Drawing.Size(627, 66);
+            this.problemInfoTextBox.TabIndex = 20;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1040, 609);
+            this.Controls.Add(this.problemInfoTextBox);
+            this.Controls.Add(this.avgGenerationsLabel);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.startButton);
@@ -499,6 +520,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.initialPopulationInput)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -534,5 +556,7 @@
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.Button showRunButton;
+        private System.Windows.Forms.Label avgGenerationsLabel;
+        private System.Windows.Forms.TextBox problemInfoTextBox;
     }
 }

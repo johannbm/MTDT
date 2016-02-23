@@ -134,6 +134,15 @@ namespace EA
 
                             this.maxFitness = form.bitStringLength;
                             this.genotypeLength = form.bitStringLength;
+
+                            string s = "Problem One Max\r\n";
+                            s += "Bit size: " + form.bitStringLength + "\r\n";
+                            s += "Target string: ";
+                            foreach (int i in form.bitString)
+                            {
+                                s += i.ToString();
+                            }
+                            problemInfoTextBox.Text = s;
                         }
                     }
                     break;
@@ -147,6 +156,12 @@ namespace EA
 
                             this.maxFitness = form.stringLength;
                             this.genotypeLength = form.stringLength;
+
+                            string s = "Problem LOLZ\r\n";
+                            s += "Bit size: " + form.stringLength + "\r\n";
+                            s += "Zero limit: " + form.zeroLimit;
+                            
+                            problemInfoTextBox.Text = s;
                         }
                     }
                     break;
@@ -161,6 +176,13 @@ namespace EA
                             this.maxFitness = 1;
                             SymbolIndividual.symbolSize = form.symbolSize;
                             this.genotypeLength = form.length;
+
+                            string s = "Surprising Sequences\r\n";
+                            s += "Length target: " + form.length + "\r\n";
+                            s += "Symbol set size: " + form.symbolSize + "\r\n";
+                            s += form.ssType.ToString();
+
+                            problemInfoTextBox.Text = s;
                         }
                     }
                     break;
@@ -293,6 +315,8 @@ namespace EA
 
         private void logListView_SelectedIndexChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
+            avgGenerationsLabel.Text = "";
+
             Console.WriteLine("#selected: " + logListView.SelectedItems.Count);
             if (e.IsSelected)
             {
@@ -346,6 +370,10 @@ namespace EA
             {
                 errorChart.Series.RemoveAt(2);
             }
+
+            double avgGenerations = ealogs.Sum(x => x.numberOfGens) / ealogs.Count;
+            avgGenerationsLabel.Text = "Average number of Generations: " + avgGenerations.ToString();
+
 
             Console.WriteLine("number of series: " + errorChart.Series.Count);
 
